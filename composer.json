@@ -1,5 +1,44 @@
 {
+    "name": "axiostudio/fattura-elettronica",
+    "description": "Pacchetto per la gestione della fatturazione elettronica in PHP",
+    "keywords": [
+        "axiostudio",
+        "fattura-elettronica"
+    ],
+    "homepage": "https://github.com/axiostudio/fattura-elettronica",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Axio Studio",
+            "email": "info@axio.studio",
+            "role": "Developer"
+        }
+    ],
     "require": {
+        "php": "^7.4|^8.0",
+        "cuyz/valinor": "^1.7",
         "spatie/array-to-xml": "^3.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Axiostudio\\FatturaElettronica\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Axiostudio\\FatturaElettronica\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
     }
 }
