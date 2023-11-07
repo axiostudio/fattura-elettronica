@@ -1,10 +1,10 @@
 <?php
 
-namespace Axiostudio\FatturaElettronica\Traits;
+namespace Axiostudio\FatturaElettronica\Handlers;
 
 use Spatie\ArrayToXml\ArrayToXml;
 
-trait HasXml
+trait XmlHandlers
 {
     public function createXml(array $array): string
     {

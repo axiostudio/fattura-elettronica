@@ -4,6 +4,6 @@ namespace Axiostudio\FatturaElettronica;
 
 class FatturaElettronica
 {
-    use \Axiostudio\FatturaElettronica\Traits\HasModel;
-    use \Axiostudio\FatturaElettronica\Traits\HasXml;
+    use \Axiostudio\FatturaElettronica\Handlers\ModelHandlers;
+    use \Axiostudio\FatturaElettronica\Handlers\XmlHandlers;
 }

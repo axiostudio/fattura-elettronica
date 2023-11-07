@@ -1,11 +1,11 @@
 <?php
 
-namespace Axiostudio\FatturaElettronica\Traits;
+namespace Axiostudio\FatturaElettronica\Handlers;
 
 use Symfony\Component\Validator\Validation;
 use Axiostudio\FatturaElettronica\Contracts\Model;
 
-trait HasModel
+trait ModelHandlers
 {
     public function createModel(Model $model)
     {
