@@ -2,24 +2,24 @@
 
 namespace Axiostudio\FatturaElettronica;
 
+use Symfony\Component\Validator\Validation;
+use Axiostudio\FatturaElettronica\Contracts\DTO;
+
 class FatturaElettronica
 {
-    public function test()
+    public function block(DTO $dto)
     {
-        try {
-            $mapper = (new \CuyZ\Valinor\MapperBuilder())->mapper();
-            $data = $mapper->map(
-                \Axiostudio\FatturaElettronica\DTO\Sede::class,
-                \CuyZ\Valinor\Mapper\Source\Source::array([
-                    'Indirizzo' => 'Via Roma 1',
-                    'Cap' => '00100',
-                    'Comune' => 'Roma',
-                ])
-            );
+        $validator = Validation::createValidatorBuilder()
+            ->addMethodMapping('loadValidatorMetadata')
+            ->getValidator();
 
-            return $data->Comune;
-        } catch (\CuyZ\Valinor\Mapper\MappingError $error) {
-            return $error->getMessage();
+        $errors = $validator->validate($dto);
+
+        if (count($errors) > 0) {
+            $errorsString = (string) $errors;
+            throw new \Exception($errorsString);
         }
+
+        return $dto;
     }
 }
