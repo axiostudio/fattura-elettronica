@@ -3,23 +3,23 @@
 namespace Axiostudio\FatturaElettronica;
 
 use Symfony\Component\Validator\Validation;
-use Axiostudio\FatturaElettronica\Contracts\DTO;
+use Axiostudio\FatturaElettronica\Contracts\Model;
 
 class FatturaElettronica
 {
-    public function block(DTO $dto)
+    public function model(Model $model)
     {
         $validator = Validation::createValidatorBuilder()
             ->addMethodMapping('loadValidatorMetadata')
             ->getValidator();
 
-        $errors = $validator->validate($dto);
+        $errors = $validator->validate($model);
 
         if (count($errors) > 0) {
             $errorsString = (string) $errors;
             throw new \Exception($errorsString);
         }
 
-        return $dto;
+        return $model;
     }
 }

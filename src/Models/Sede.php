@@ -1,13 +1,13 @@
 <?php
 
-namespace Axiostudio\FatturaElettronica\DTO;
+namespace Axiostudio\FatturaElettronica\Models;
 
-use Axiostudio\FatturaElettronica\Contracts\DTO;
+use Axiostudio\FatturaElettronica\Contracts\Model;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
-class Sede implements DTO
+class Sede implements Model
 {
     public string $indirizzo;
     public string $cap;
