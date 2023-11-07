@@ -1,6 +1,0 @@
-{
-    "require": {
-        "spatie/array-to-xml": "^3.2",
-        "spatie/laravel-data": "^3.9"
-    }
-}

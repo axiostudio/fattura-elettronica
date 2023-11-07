@@ -11,20 +11,13 @@
     "authors": [
         {
             "name": "Axio Studio",
-            "email": "info@axio.studio",
-            "role": "Developer"
+            "email": "info@axio.studio"
         }
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "cuyz/valinor": "^1.7",
-        "doctrine/annotations": "^2.0",
         "spatie/array-to-xml": "^3.2",
-        "symfony/form": "^6.3",
         "symfony/validator": "^6.3"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
@@ -35,11 +28,6 @@
         "psr-4": {
             "Axiostudio\\FatturaElettronica\\Tests\\": "tests"
         }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "config": {
         "sort-packages": true

@@ -3,9 +3,8 @@
 namespace Axiostudio\FatturaElettronica\DTO;
 
 use Axiostudio\FatturaElettronica\Contracts\DTO;
-use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Length;
-use Axiostudio\FatturaElettronica\Types\TipoFattura;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 class Sede implements DTO
@@ -15,7 +14,7 @@ class Sede implements DTO
     public string $comune;
     public ?string $provincia;
     public ?string $nazione;
-    public TipoFattura $tipoFattura;
+    public string $tipoFattura;
 
     public function __construct(...$args)
     {
@@ -30,7 +29,7 @@ class Sede implements DTO
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
     {
         $metadata->addPropertyConstraint('provincia', new Length(2));
-        $metadata->addPropertyConstraint('nazione', new Length(2, 2));
-        $metadata->addPropertyConstraint('tipoFattura', new Type(TipoFattura::class));
+        $metadata->addPropertyConstraint('nazione', new Length(2));
+        $metadata->addPropertyConstraint('tipoFattura', new Choice(['T01', 'T02', 'T03']));
     }
 }

@@ -4,7 +4,6 @@ require('vendor/autoload.php');
 
 use Axiostudio\FatturaElettronica\DTO\Sede;
 use Axiostudio\FatturaElettronica\FatturaElettronica;
-use Axiostudio\FatturaElettronica\Types\TipoFattura;
 
 $test = new FatturaElettronica();
 
@@ -14,7 +13,7 @@ $prova = $test->block(new Sede(
     'Roma',
     'RM',
     'IT',
-    TipoFattura::T01
+    'T01'
 ));
 
-var_dump($prova);
+var_dump($prova->tipoFattura);
