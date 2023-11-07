@@ -18,9 +18,7 @@ $sede = $fattura->createModel(new Sede(
 
 var_dump($sede);
 
-echo $fattura->createXml(
-    $fattura->modelToArray($sede)
-);
+echo $fattura->createXml($sede);
 
 /* 
 $data = [
