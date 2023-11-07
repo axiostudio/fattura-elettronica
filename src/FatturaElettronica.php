@@ -7,7 +7,7 @@ use Axiostudio\FatturaElettronica\Contracts\Model;
 
 class FatturaElettronica
 {
-    public function model(Model $model)
+    public function createModel(Model $model)
     {
         $validator = Validation::createValidatorBuilder()
             ->addMethodMapping('loadValidatorMetadata')

@@ -7,7 +7,7 @@ use Axiostudio\FatturaElettronica\FatturaElettronica;
 
 $fattura = new FatturaElettronica();
 
-$data = $fattura->model(new Sede(
+$sede = $fattura->createModel(new Sede(
     'Via Roma 1',
     '00100',
     'Roma',
@@ -16,4 +16,4 @@ $data = $fattura->model(new Sede(
     'T01'
 ));
 
-var_dump($data);
+var_dump($sede);
