@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^8.0",
         "spatie/array-to-xml": "^3.2",
         "symfony/validator": "^6.3"
     },
