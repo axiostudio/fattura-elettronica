@@ -28,8 +28,13 @@ $datiGeneraliDocumento = ['123', '2021-01-01', '100.00'];
 
 $datiGenerali = [$datiGeneraliDocumento];
 
+$dettaglioPagamento = ['100.00'];
+
+$datiDatiPagamento = [$dettaglioPagamento];
+
 $body = [
-    $datiGenerali
+    $datiGenerali,
+    $datiDatiPagamento
 ];
 
 $datiXml = $fattura->create($header, $body);
