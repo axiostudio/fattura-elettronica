@@ -6,13 +6,17 @@ use Axiostudio\FatturaElettronica\FatturaElettronica;
 
 $fattura = new FatturaElettronica();
 
-$datiXml = $fattura->header(
-    [
-        ['12345678910', '123'],
-        [['12345678910', 'fornitore srl'], ['via roma', '12345', 'roma', 'rm']],
-        [['12345678910', 'cliente srl'], ['via roma', '12345', 'roma', 'rm']]
-    ]
-);
+$datiTrasmissione = ['12345678910', '123'];
+$cedentePrestatore = [['12345678910', 'fornitore srl'], ['via roma', '12345', 'roma', 'rm']];
+$cessionarioCommittente = [['12345678910', 'cliente srl'], ['via roma', '12345', 'roma', 'rm']];
+
+$header = [
+    $datiTrasmissione,
+    $cedentePrestatore,
+    $cessionarioCommittente
+];
+
+$datiXml = $fattura->create($header);
 
 echo $fattura->createXml($datiXml);
 
