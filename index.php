@@ -3,16 +3,15 @@
 require('vendor/autoload.php');
 
 use Axiostudio\FatturaElettronica\FatturaElettronica;
+use Axiostudio\FatturaElettronica\Models\DatiAnagrafici;
 use Axiostudio\FatturaElettronica\Models\IdTrasmittente;
 use Axiostudio\FatturaElettronica\Models\DatiTrasmissione;
 
 $fattura = new FatturaElettronica();
 
-$sede = $fattura->createModel(new DatiTrasmissione(
+$sede = $fattura->createModel(new DatiAnagrafici(
     '12345678910',
-    '2023',
-    'FPR12',
-    '0000000'
+    'test srl'
 ), true);
 
 var_dump($sede);

@@ -6,7 +6,7 @@ use Axiostudio\FatturaElettronica\Contracts\Model;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
-class IdTrasmittente implements Model
+class Id implements Model
 {
     public string $IdCodice;
     public ?string $IdPaese;
