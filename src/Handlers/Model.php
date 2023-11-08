@@ -3,10 +3,11 @@
 namespace Axiostudio\FatturaElettronica\Handlers;
 
 use Symfony\Component\Validator\Validation;
+use Axiostudio\FatturaElettronica\Contracts\Model as ModelInterface;
 
 trait Model
 {
-    public function createModel(Model $model, bool $toArray = false): array|Model
+    public function createModel(ModelInterface $model, bool $toArray = false): array|ModelInterface
     {
         $validator = Validation::createValidatorBuilder()
             ->addMethodMapping('loadValidatorMetadata')
@@ -26,7 +27,7 @@ trait Model
         return $this->modelToArray($model);
     }
 
-    protected function modelToArray(Model $model): array
+    protected function modelToArray(ModelInterface $model): array
     {
         return json_decode(json_encode($model), true);
     }
