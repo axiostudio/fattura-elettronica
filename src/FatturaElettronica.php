@@ -20,18 +20,19 @@ class FatturaElettronica
         return $idPaese . $idCodice . '_' . $progressivoInvio . '.xml';
     }
 
+    protected function file($header, $body): string
+    {
+        $fattura = $this->createModel(new Fattura($header, $body), true);
+
+        return $this->createXml($fattura);
+    }
+
     public function create(
         array $FatturaElettronicaHeader,
         array $FatturaElettronicaBody
     ): array {
         return [
-            'file' => $this->createModel(
-                new Fattura(
-                    $FatturaElettronicaHeader,
-                    $FatturaElettronicaBody
-                ),
-                true
-            ),
+            'file' => $this->file($FatturaElettronicaHeader, $FatturaElettronicaBody),
             'fileName' => $this->fileName($FatturaElettronicaHeader)
         ];
     }
