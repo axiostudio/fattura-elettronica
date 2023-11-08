@@ -4,7 +4,7 @@ namespace Axiostudio\FatturaElettronica\Handlers;
 
 use Spatie\ArrayToXml\ArrayToXml;
 
-trait XmlHandlers
+trait Xml
 {
     public function createXml(array $array): string
     {

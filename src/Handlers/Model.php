@@ -3,9 +3,8 @@
 namespace Axiostudio\FatturaElettronica\Handlers;
 
 use Symfony\Component\Validator\Validation;
-use Axiostudio\FatturaElettronica\Contracts\Model;
 
-trait ModelHandlers
+trait Model
 {
     public function createModel(Model $model, bool $toArray = false): array|Model
     {
