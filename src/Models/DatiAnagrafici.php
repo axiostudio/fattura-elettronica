@@ -22,13 +22,20 @@ class DatiAnagrafici implements Model
     public function __construct(...$args)
     {
         $this->IdFiscaleIVA = is_array($args[0]) ?
-            $this->createModel(new Id($args[0][0], $args[0][1])) :
+            $this->createModel(new Id(...$args[0])) :
             $this->createModel(new Id($args[0]));
 
-        $this->Anagrafica = $this->createModel(new Anagrafica($args[1]));
+        $this->Anagrafica = is_array($args[1]) ?
+            $this->createModel(new Anagrafica(...$args[1])) :
+            $this->createModel(new Anagrafica($args[1]));
 
-        $this->CodiceFiscale = $args[2] ?? null;
-        $this->RegimeFiscale = $args[3] ?? 'RF1';
+        if ($args[2]) {
+            $this->CodiceFiscale = $args[2];
+        }
+
+        if ($args[3]) {
+            $this->RegimeFiscale = $args[3];
+        }
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
