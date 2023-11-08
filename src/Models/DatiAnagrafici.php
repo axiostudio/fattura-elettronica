@@ -8,9 +8,8 @@ use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Length;
 use Axiostudio\FatturaElettronica\Models\Anagrafica;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Axiostudio\FatturaElettronica\Contracts\ModelInterface;
 
-class DatiAnagrafici extends Model implements ModelInterface
+class DatiAnagrafici extends Model
 {
     public Id $IdFiscaleIVA;
     public Anagrafica $Anagrafica;

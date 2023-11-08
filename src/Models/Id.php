@@ -5,9 +5,8 @@ namespace Axiostudio\FatturaElettronica\Models;
 use Axiostudio\FatturaElettronica\Models\Model;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Axiostudio\FatturaElettronica\Contracts\ModelInterface;
 
-class Id extends Model implements ModelInterface
+class Id extends Model
 {
     public string $IdCodice;
     public ?string $IdPaese;

@@ -6,9 +6,8 @@ use Axiostudio\FatturaElettronica\Models\Sede;
 use Axiostudio\FatturaElettronica\Models\Model;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Axiostudio\FatturaElettronica\Models\DatiAnagrafici;
-use Axiostudio\FatturaElettronica\Contracts\ModelInterface;
 
-class CedentePrestatore extends Model implements ModelInterface
+class CedentePrestatore extends Model
 {
     public DatiAnagrafici $DatiAnagrafici;
     public Sede $Sede;

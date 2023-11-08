@@ -4,9 +4,8 @@ namespace Axiostudio\FatturaElettronica\Models;
 
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Axiostudio\FatturaElettronica\Contracts\ModelInterface;
 
-class Sede extends Model implements ModelInterface
+class Sede extends Model
 {
     public string $Indirizzo;
     public string $Cap;

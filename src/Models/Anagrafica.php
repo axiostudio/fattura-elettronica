@@ -4,9 +4,8 @@ namespace Axiostudio\FatturaElettronica\Models;
 
 use Axiostudio\FatturaElettronica\Models\Model;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Axiostudio\FatturaElettronica\Contracts\ModelInterface;
 
-class Anagrafica extends Model implements ModelInterface
+class Anagrafica extends Model
 {
     public ?string $Denominazione;
     public ?string $Nome;

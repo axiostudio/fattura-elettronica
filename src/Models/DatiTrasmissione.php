@@ -7,9 +7,8 @@ use Axiostudio\FatturaElettronica\Models\Model;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Axiostudio\FatturaElettronica\Contracts\ModelInterface;
 
-class DatiTrasmissione extends Model implements ModelInterface
+class DatiTrasmissione extends Model
 {
     public Id $IdTrasmittente;
     public string $ProgressivoInvio;
