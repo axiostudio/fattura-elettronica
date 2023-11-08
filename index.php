@@ -2,19 +2,18 @@
 
 require('vendor/autoload.php');
 
-use Axiostudio\FatturaElettronica\Models\Sede;
 use Axiostudio\FatturaElettronica\FatturaElettronica;
+use Axiostudio\FatturaElettronica\Models\IdTrasmittente;
+use Axiostudio\FatturaElettronica\Models\DatiTrasmissione;
 
 $fattura = new FatturaElettronica();
 
-$sede = $fattura->createModel(new Sede(
-    'Via Roma 1',
-    '00100',
-    'Roma',
-    'RM',
-    null,
-    'T01'
-));
+$sede = $fattura->createModel(new DatiTrasmissione(
+    '12345678910',
+    '2023',
+    'FPR12',
+    '0000000'
+), true);
 
 var_dump($sede);
 

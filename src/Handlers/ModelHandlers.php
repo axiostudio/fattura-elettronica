@@ -7,7 +7,7 @@ use Axiostudio\FatturaElettronica\Contracts\Model;
 
 trait ModelHandlers
 {
-    public function createModel(Model $model)
+    public function createModel(Model $model, bool $toArray = false): array|Model
     {
         $validator = Validation::createValidatorBuilder()
             ->addMethodMapping('loadValidatorMetadata')
@@ -18,6 +18,10 @@ trait ModelHandlers
         if (count($errors) > 0) {
             $errorsString = (string) $errors;
             throw new \Exception($errorsString);
+        }
+
+        if (!$toArray) {
+            return $model;
         }
 
         return $this->modelToArray($model);
