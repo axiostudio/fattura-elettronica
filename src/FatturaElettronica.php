@@ -11,16 +11,28 @@ class FatturaElettronica
     use ModelHandler;
     use XmlHandler;
 
+    protected function fileName($header)
+    {
+        $idPaese = (is_array($header[0][0]) && isset($header[0][0][1])) ? $header[0][0][1] : Settings::IdPaeseDefault();
+        $idCodice = (is_array($header[0][0])) ? $header[0][0][0] : $header[0][0];
+        $progressivoInvio = $header[0][1];
+
+        return $idPaese . $idCodice . '_' . $progressivoInvio . '.xml';
+    }
+
     public function create(
         array $FatturaElettronicaHeader,
         array $FatturaElettronicaBody
     ): array {
-        return $this->createModel(
-            new Fattura(
-                $FatturaElettronicaHeader,
-                $FatturaElettronicaBody
+        return [
+            'file' => $this->createModel(
+                new Fattura(
+                    $FatturaElettronicaHeader,
+                    $FatturaElettronicaBody
+                ),
+                true
             ),
-            true
-        );
+            'fileName' => $this->fileName($FatturaElettronicaHeader)
+        ];
     }
 }

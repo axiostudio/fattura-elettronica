@@ -39,7 +39,7 @@ $body = [
 
 $datiXml = $fattura->create($header, $body);
 
-echo $fattura->createXml($datiXml);
+var_dump($datiXml);
 
 /* 
 $data = [
