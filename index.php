@@ -3,16 +3,14 @@
 require('vendor/autoload.php');
 
 use Axiostudio\FatturaElettronica\FatturaElettronica;
-use Axiostudio\FatturaElettronica\Models\CedentePrestatore;
 
 $fattura = new FatturaElettronica();
 
-$sede = $fattura->createModel(new CedentePrestatore(
-    ['12345678910', 'test srl'],
-    ['via roma', '12345', 'roma', 'rm']
-), true);
-
-var_dump($sede);
+$sede = $fattura->header(
+    ['12345678910', '123'],
+    [['12345678910', 'fornitore srl'], ['via roma', '12345', 'roma', 'rm']],
+    [['12345678910', 'cliente srl'], ['via roma', '12345', 'roma', 'rm']]
+);
 
 echo $fattura->createXml($sede);
 
