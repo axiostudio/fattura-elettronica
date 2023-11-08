@@ -11,7 +11,7 @@ class FatturaElettronica
     use ModelHandler;
     use XmlHandler;
 
-    protected function fileName($header)
+    protected function fileName($header): string
     {
         $idPaese = (is_array($header[0][0]) && isset($header[0][0][1])) ? $header[0][0][1] : Settings::IdPaeseDefault();
         $idCodice = (is_array($header[0][0])) ? $header[0][0][0] : $header[0][0];
