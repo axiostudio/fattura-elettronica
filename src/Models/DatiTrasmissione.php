@@ -2,6 +2,7 @@
 
 namespace Axiostudio\FatturaElettronica\Models;
 
+use Axiostudio\FatturaElettronica\Settings;
 use Axiostudio\FatturaElettronica\Abstracts\Model;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Length;
@@ -21,13 +22,13 @@ class DatiTrasmissione extends Model
             $this->createModel(new Id($args[0]));
 
         $this->ProgressivoInvio = $args[1];
-        $this->FormatoTrasmissione = (isset($args[2]) && $args[2]) ? $args[2] : 'FPR12';
-        $this->CodiceDestinatario = (isset($args[3]) && $args[3]) ? $args[3] : '0000000';
+        $this->FormatoTrasmissione = (isset($args[2]) && $args[2]) ? $args[2] : Settings::FormatoTrasmissioneDefault();
+        $this->CodiceDestinatario = (isset($args[3]) && $args[3]) ? $args[3] : Settings::CodiceDestinatarioDefault();
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
     {
-        $metadata->addPropertyConstraint('FormatoTrasmissione', new Choice(['FPA12', 'FPR12']));
+        $metadata->addPropertyConstraint('FormatoTrasmissione', new Choice(Settings::FormatoTrasmissione()));
         $metadata->addPropertyConstraint('CodiceDestinatario', new Length(null, 6, 7));
     }
 }

@@ -23,9 +23,9 @@ class DatiGeneraliDocumento extends Model
         $this->Numero = $args[0];
         $this->Data = $args[1];
         $this->ImportoTotaleDocumento = $args[2];
-        $this->Causale = (isset($args[4]) && $args[4]) ? $args[4] : Settings::CausalePredefinita();
-        $this->TipoDocumento = (isset($args[4]) && $args[4]) ? $args[4] : Settings::TipoDocumentoPredefinito();
-        $this->Divisa = (isset($args[5]) && $args[5]) ? $args[5] : Settings::ValutaPredefinita();
+        $this->Causale = (isset($args[4]) && $args[4]) ? $args[4] : Settings::CausaleDefault();
+        $this->TipoDocumento = (isset($args[4]) && $args[4]) ? $args[4] : Settings::TipoDocumentoDefault();
+        $this->Divisa = (isset($args[5]) && $args[5]) ? $args[5] : Settings::ValutaDefault();
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
