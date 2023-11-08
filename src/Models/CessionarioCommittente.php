@@ -3,7 +3,7 @@
 namespace Axiostudio\FatturaElettronica\Models;
 
 use Axiostudio\FatturaElettronica\Models\Sede;
-use Axiostudio\FatturaElettronica\Models\Model;
+use Axiostudio\FatturaElettronica\Abstracts\Model;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Axiostudio\FatturaElettronica\Models\DatiAnagrafici;
 

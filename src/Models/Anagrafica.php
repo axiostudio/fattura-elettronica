@@ -2,7 +2,7 @@
 
 namespace Axiostudio\FatturaElettronica\Models;
 
-use Axiostudio\FatturaElettronica\Models\Model;
+use Axiostudio\FatturaElettronica\Abstracts\Model;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 class Anagrafica extends Model

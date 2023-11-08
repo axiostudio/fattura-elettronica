@@ -3,7 +3,7 @@
 namespace Axiostudio\FatturaElettronica\Models;
 
 use Axiostudio\FatturaElettronica\Models\Id;
-use Axiostudio\FatturaElettronica\Models\Model;
+use Axiostudio\FatturaElettronica\Abstracts\Model;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
