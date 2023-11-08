@@ -6,66 +6,17 @@ use Axiostudio\FatturaElettronica\FatturaElettronica;
 
 $fattura = new FatturaElettronica();
 
-$sede = $fattura->header(
+$datiXml = $fattura->header(
     ['12345678910', '123'],
     [['12345678910', 'fornitore srl'], ['via roma', '12345', 'roma', 'rm']],
     [['12345678910', 'cliente srl'], ['via roma', '12345', 'roma', 'rm']]
 );
 
-echo $fattura->createXml($sede);
+echo $fattura->createXml($datiXml);
 
 /* 
 $data = [
-    'FatturaElettronicaHeader' => [
-        'DatiTrasmissione' => [
-            'IdTrasmittente' => [
-                'IdPaese' => 'IT',
-                'IdCodice' => '12345678901',
-            ],
-            'ProgressivoInvio' => '2023',
-            'FormatoTrasmissione' => 'FPR12',
-            'CodiceDestinatario' => '0000000',
-        ],
-        'CedentePrestatore' => [
-            'DatiAnagrafici' => [
-                'IdFiscaleIVA' => [
-                    'IdPaese' => 'IT',
-                    'IdCodice' => '12345678901',
-                ],
-                'CodiceFiscale' => '12345678901',
-                'Anagrafica' => [
-                    'Denominazione' => 'Denominazione',
-                ],
-                'RegimeFiscale' => 'RF01'
-            ],
-            'Sede' => [
-                'Indirizzo' => 'Indirizzo',
-                'CAP' => '12345',
-                'Comune' => 'Comune',
-                'Provincia' => 'MI',
-                'Nazione' => 'IT',
-            ]
-        ],
-        'CessionarioCommittente' => [
-            'DatiAnagrafici' => [
-                'IdFiscaleIVA' => [
-                    'IdPaese' => 'IT',
-                    'IdCodice' => '12345678902',
-                ],
-                'CodiceFiscale' => '12345678902',
-                'Anagrafica' => [
-                    'Denominazione' => 'Cliente',
-                ]
-            ],
-            'Sede' => [
-                'Indirizzo' => 'Indirizzo',
-                'CAP' => '12345',
-                'Comune' => 'Comune',
-                'Provincia' => 'MI',
-                'Nazione' => 'IT',
-            ]
-        ]
-    ],
+    
     'FatturaElettronicaBody' => [
         'DatiGenerali' => [
             'DatiGeneraliDocumento' => [

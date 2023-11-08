@@ -4,7 +4,7 @@ namespace Axiostudio\FatturaElettronica\Contracts;
 
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
-interface Model
+interface ModelInterface
 {
     public function __construct(...$args);
 

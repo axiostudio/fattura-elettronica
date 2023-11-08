@@ -2,17 +2,15 @@
 
 namespace Axiostudio\FatturaElettronica\Models;
 
-use Axiostudio\FatturaElettronica\Contracts\Model;
+use Axiostudio\FatturaElettronica\Models\Id;
+use Axiostudio\FatturaElettronica\Models\Model;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Length;
-use Axiostudio\FatturaElettronica\Handlers\ModelHandlers;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Axiostudio\FatturaElettronica\Models\Id;
+use Axiostudio\FatturaElettronica\Contracts\ModelInterface;
 
-class DatiTrasmissione implements Model
+class DatiTrasmissione extends Model implements ModelInterface
 {
-    use ModelHandlers;
-
     public Id $IdTrasmittente;
     public string $ProgressivoInvio;
     public ?string $FormatoTrasmissione;
@@ -25,8 +23,8 @@ class DatiTrasmissione implements Model
             $this->createModel(new Id($args[0]));
 
         $this->ProgressivoInvio = $args[1];
-        $this->FormatoTrasmissione = $args[2] ?? 'FPR12';
-        $this->CodiceDestinatario = $args[3] ?? '0000000';
+        $this->FormatoTrasmissione = (isset($args[2]) && $args[2]) ? $args[2] : 'FPR12';
+        $this->CodiceDestinatario = (isset($args[3]) && $args[3]) ? $args[3] : '0000000';
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void

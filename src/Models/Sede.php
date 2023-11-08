@@ -2,11 +2,11 @@
 
 namespace Axiostudio\FatturaElettronica\Models;
 
-use Axiostudio\FatturaElettronica\Contracts\Model;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Axiostudio\FatturaElettronica\Contracts\ModelInterface;
 
-class Sede implements Model
+class Sede extends Model implements ModelInterface
 {
     public string $Indirizzo;
     public string $Cap;
@@ -19,8 +19,8 @@ class Sede implements Model
         $this->Indirizzo = $args[0];
         $this->Cap = $args[1];
         $this->Comune = $args[2];
-        $this->Provincia = $args[3] ?? null;
-        $this->Nazione = $args[4] ?? 'IT';
+        $this->Provincia = (isset($args[3]) && $args[3]) ? $args[3] : null;
+        $this->Nazione = (isset($args[4]) && $args[4]) ? $args[4] : 'IT';
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void

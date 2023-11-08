@@ -3,17 +3,15 @@
 namespace Axiostudio\FatturaElettronica\Models;
 
 use Axiostudio\FatturaElettronica\Models\Id;
-use Axiostudio\FatturaElettronica\Contracts\Model;
+use Axiostudio\FatturaElettronica\Models\Model;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Length;
 use Axiostudio\FatturaElettronica\Models\Anagrafica;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Axiostudio\FatturaElettronica\Handlers\ModelHandlers;
+use Axiostudio\FatturaElettronica\Contracts\ModelInterface;
 
-class DatiAnagrafici implements Model
+class DatiAnagrafici extends Model implements ModelInterface
 {
-    use ModelHandlers;
-
     public Id $IdFiscaleIVA;
     public Anagrafica $Anagrafica;
     public ?string $CodiceFiscale;
@@ -29,11 +27,11 @@ class DatiAnagrafici implements Model
             $this->createModel(new Anagrafica(...$args[1])) :
             $this->createModel(new Anagrafica($args[1]));
 
-        if ($args[2]) {
+        if (isset($args[2]) && $args[2]) {
             $this->CodiceFiscale = $args[2];
         }
 
-        if ($args[3]) {
+        if (isset($args[3]) && $args[3]) {
             $this->RegimeFiscale = $args[3];
         }
     }

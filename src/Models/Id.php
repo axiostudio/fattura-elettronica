@@ -2,11 +2,12 @@
 
 namespace Axiostudio\FatturaElettronica\Models;
 
-use Axiostudio\FatturaElettronica\Contracts\Model;
+use Axiostudio\FatturaElettronica\Models\Model;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Axiostudio\FatturaElettronica\Contracts\ModelInterface;
 
-class Id implements Model
+class Id extends Model implements ModelInterface
 {
     public string $IdCodice;
     public ?string $IdPaese;
@@ -14,7 +15,7 @@ class Id implements Model
     public function __construct(...$args)
     {
         $this->IdCodice = $args[0];
-        $this->IdPaese = $args[1] ?? 'IT';
+        $this->IdPaese = (isset($args[1]) && $args[1]) ? $args[1] : 'IT';
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void

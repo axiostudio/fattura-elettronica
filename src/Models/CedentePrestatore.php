@@ -2,14 +2,14 @@
 
 namespace Axiostudio\FatturaElettronica\Models;
 
-use Axiostudio\FatturaElettronica\Contracts\Model;
+use Axiostudio\FatturaElettronica\Models\Sede;
+use Axiostudio\FatturaElettronica\Models\Model;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Axiostudio\FatturaElettronica\Handlers\ModelHandlers;
+use Axiostudio\FatturaElettronica\Models\DatiAnagrafici;
+use Axiostudio\FatturaElettronica\Contracts\ModelInterface;
 
-class CedentePrestatore implements Model
+class CedentePrestatore extends Model implements ModelInterface
 {
-    use ModelHandlers;
-
     public DatiAnagrafici $DatiAnagrafici;
     public Sede $Sede;
 
