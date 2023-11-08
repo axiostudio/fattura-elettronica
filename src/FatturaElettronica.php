@@ -11,10 +11,10 @@ class FatturaElettronica
     use ModelHandler;
     use XmlHandler;
 
-    public function create(array $data): array
+    public function create(array $header, array $body): array
     {
         return $this->createModel(
-            new Fattura($data),
+            new Fattura($header, $body),
             true
         );
     }
