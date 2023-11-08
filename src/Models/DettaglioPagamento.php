@@ -3,6 +3,7 @@
 namespace Axiostudio\FatturaElettronica\Models;
 
 use Axiostudio\FatturaElettronica\Abstracts\Model;
+use Axiostudio\FatturaElettronica\Settings;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\Iban;
@@ -63,7 +64,7 @@ class DettaglioPagamento extends Model
             $this->BIC = $args[9];
         }
 
-        $this->ModalitaPagamento = (isset($args[10]) && $args[10]) ? $args[10] : 'MP05';
+        $this->ModalitaPagamento = (isset($args[10]) && $args[10]) ? $args[10] : Settings::ModalitaPagamentoDefault();
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
@@ -74,6 +75,6 @@ class DettaglioPagamento extends Model
         $metadata->addPropertyConstraint('ABI', new Length(5));
         $metadata->addPropertyConstraint('CAB', new Length(5));
         $metadata->addPropertyConstraint('BIC', new Length(null, 8, 11));
-        $metadata->addPropertyConstraint('ModalitaPagamento', new Choice(['MP01', 'MP02', 'MP03', 'MP04', 'MP05', 'MP06', 'MP07', 'MP08', 'MP09', 'MP10', 'MP11', 'MP12', 'MP13', 'MP14', 'MP15', 'MP16', 'MP17', 'MP18', 'MP19', 'MP20', 'MP21', 'MP22', 'MP23']));
+        $metadata->addPropertyConstraint('ModalitaPagamento', new Choice(Settings::ModalitaPagamento()));
     }
 }

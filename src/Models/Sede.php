@@ -3,6 +3,7 @@
 namespace Axiostudio\FatturaElettronica\Models;
 
 use Axiostudio\FatturaElettronica\Abstracts\Model;
+use Axiostudio\FatturaElettronica\Settings;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
@@ -20,7 +21,7 @@ class Sede extends Model
         $this->Cap = $args[1];
         $this->Comune = $args[2];
         $this->Provincia = (isset($args[3]) && $args[3]) ? $args[3] : null;
-        $this->Nazione = (isset($args[4]) && $args[4]) ? $args[4] : 'IT';
+        $this->Nazione = (isset($args[4]) && $args[4]) ? $args[4] : Settings::IdPaeseDefault();
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void

@@ -2,6 +2,7 @@
 
 namespace Axiostudio\FatturaElettronica\Models;
 
+use Axiostudio\FatturaElettronica\Settings;
 use Axiostudio\FatturaElettronica\Abstracts\Model;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
@@ -14,7 +15,7 @@ class Id extends Model
     public function __construct(...$args)
     {
         $this->IdCodice = $args[0];
-        $this->IdPaese = (isset($args[1]) && $args[1]) ? $args[1] : 'IT';
+        $this->IdPaese = (isset($args[1]) && $args[1]) ? $args[1] : Settings::IdPaeseDefault();
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
