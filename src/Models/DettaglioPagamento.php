@@ -3,7 +3,6 @@
 namespace Axiostudio\FatturaElettronica\Models;
 
 use Axiostudio\FatturaElettronica\Abstracts\Model;
-use Symfony\Component\Validator\Constraints\Bic;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\Iban;
