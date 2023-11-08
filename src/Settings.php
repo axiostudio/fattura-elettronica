@@ -68,4 +68,14 @@ class Settings
     {
         return '0000000';
     }
+
+    public static function XmlStart(): string
+    {
+        return '<v1:FatturaElettronica xmlns:v1="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">';
+    }
+
+    public static function XmlEnd(): string
+    {
+        return '</v1:FatturaElettronica>';
+    }
 }

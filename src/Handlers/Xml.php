@@ -3,6 +3,7 @@
 namespace Axiostudio\FatturaElettronica\Handlers;
 
 use Spatie\ArrayToXml\ArrayToXml;
+use Axiostudio\FatturaElettronica\Settings;
 
 trait Xml
 {
@@ -15,9 +16,9 @@ trait Xml
 
     protected function updateXml(string $xml): string
     {
-        $xml = str_replace('<?xml version="1.0"?>', '<v1:FatturaElettronica xmlns:v1="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">', $xml);
+        $xml = str_replace('<?xml version="1.0"?>', Settings::XmlStart(), $xml);
         $xml = str_replace('<root>', '', $xml);
-        $xml = str_replace('</root>', '</v1:FatturaElettronica>', $xml);
+        $xml = str_replace('</root>', Settings::XmlEnd(), $xml);
 
         return $xml;
     }
