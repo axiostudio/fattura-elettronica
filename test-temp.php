@@ -48,6 +48,8 @@ $datiRiepilogo = [
     ['100.00', '0.00', 'N2.1'],
 ];
 
+// TODO -> Fattura -> COMPOSE( passando dati e creando struttura per create !!!)
+
 $datiXml = $fattura->create($header, $body, $dettaglioLinee, $datiRiepilogo);
 
 var_dump($datiXml);
