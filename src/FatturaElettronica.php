@@ -3,7 +3,7 @@
 namespace Axiostudio\FatturaElettronica;
 
 use Axiostudio\FatturaElettronica\Handlers\Xml as XmlHandler;
-use Axiostudio\FatturaElettronica\Handlers\DataDatiBeniServizi;
+use Axiostudio\FatturaElettronica\Handlers\XmlDatiBeniServizi as DatiBeniServiziHandler;
 use Axiostudio\FatturaElettronica\Handlers\Model as ModelHandler;
 use Axiostudio\FatturaElettronica\Models\FatturaElettronica as Fattura;
 
@@ -11,7 +11,7 @@ class FatturaElettronica
 {
     use ModelHandler;
     use XmlHandler;
-    use DataDatiBeniServizi;
+    use DatiBeniServiziHandler;
 
     protected function fileName($header): string
     {
@@ -22,7 +22,7 @@ class FatturaElettronica
         return $idPaese . $idCodice . '_' . $progressivoInvio . '.xml';
     }
 
-    protected function file($header, $body): string
+    protected function fileContent($header, $body): string
     {
         $fattura = $this->createModel(new Fattura($header, $body), true);
 
@@ -36,11 +36,11 @@ class FatturaElettronica
         array $DatiRiepilogo
     ): array {
 
-        $xml = $this->file($FatturaElettronicaHeader, $FatturaElettronicaBody);
-        $xml = $this->addDatiBeniServiziToXml($xml, $DettaglioLinee, $DatiRiepilogo);
+        $xmlContent = $this->fileContent($FatturaElettronicaHeader, $FatturaElettronicaBody);
+        $xmlContent = $this->addDatiBeniServiziToXml($xmlContent, $DettaglioLinee, $DatiRiepilogo);
 
         return [
-            'file' => $xml,
+            'fileContent' => $xmlContent,
             'fileName' => $this->fileName($FatturaElettronicaHeader)
         ];
     }

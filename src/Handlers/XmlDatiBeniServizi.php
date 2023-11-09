@@ -7,7 +7,7 @@ use Axiostudio\FatturaElettronica\Handlers\Model;
 use Axiostudio\FatturaElettronica\Models\DatiRiepilogo;
 use Axiostudio\FatturaElettronica\Models\DettaglioLinee;
 
-trait DataDatiBeniServizi
+trait XmlDatiBeniServizi
 {
     use Xml;
     use Model;
@@ -29,7 +29,7 @@ trait DataDatiBeniServizi
             $DatiRiepilogoBlock .= '<DatiRiepilogo>' . $this->createXmlBlock($data) . '</DatiRiepilogo>';
         }
 
-        $xml = str_replace('<DataDatiBeniServizi></DataDatiBeniServizi>', $DettaglioLineeBlock . $DatiRiepilogoBlock, $Xml);
+        $xml = str_replace('<XmlDatiBeniServizi></XmlDatiBeniServizi>', $DettaglioLineeBlock . $DatiRiepilogoBlock, $Xml);
 
         return $xml;
     }

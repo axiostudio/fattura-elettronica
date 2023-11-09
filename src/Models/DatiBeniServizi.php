@@ -7,12 +7,12 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 class DatiBeniServizi extends Model
 {
-    public $DataDatiBeniServizi;
+    public $XmlDatiBeniServizi;
 
     public function __construct(...$args)
     {
-        // Data will be managed into DataDatiBeniServizi Handler
-        $this->DataDatiBeniServizi = null;
+        // Data will be managed into XmlDatiBeniServizi Handler
+        $this->XmlDatiBeniServizi = null;
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
