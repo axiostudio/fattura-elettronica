@@ -29,9 +29,7 @@ class DatiAnagrafici extends Model
             $this->CodiceFiscale = $args[2];
         }
 
-        if (isset($args[3]) && $args[3]) {
-            $this->RegimeFiscale = $args[3];
-        }
+        $this->RegimeFiscale = (isset($args[3]) && $args[3]) ? $args[3] : Settings::RegimeFiscaleDefault();
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void

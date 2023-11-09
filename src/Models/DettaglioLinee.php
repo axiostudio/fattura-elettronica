@@ -11,12 +11,11 @@ class DettaglioLinee extends Model
 {
     public string $Descrizione;
     public float $PrezzoUnitario;
-    public ?int $Quantita;
+    public ?float $Quantita;
     public ?string $UnitaMisura;
     public ?float $AliquotaIVA;
     public ?string $Natura;
-    public ?string $CodiceArticolo;
-    public ?string $CodiceTipo;
+    public ?float $PrezzoTotale;
 
     public function __construct(...$args)
     {
@@ -25,6 +24,7 @@ class DettaglioLinee extends Model
         $this->Quantita = (isset($args[2]) && $args[2]) ? $args[2] : Settings::QuantitaDefault();
         $this->UnitaMisura = (isset($args[3]) && $args[3]) ? $args[3] : Settings::UnitaMisuraDefault();
         $this->AliquotaIVA = (isset($args[4]) && $args[4]) ? $args[4] : Settings::AliquotaIVADefault();
+        $this->PrezzoTotale = $this->PrezzoUnitario * $this->Quantita;
 
         if (isset($args[5]) && $args[5]) {
             $this->Natura = $args[5];

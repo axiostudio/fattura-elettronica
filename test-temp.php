@@ -9,12 +9,12 @@ $fattura = new FatturaElettronica();
 $datiTrasmissione = ['12345678910', '123'];
 
 $anagraficaPrestatore = ['12345678910', 'fornitore srl'];
-$sedePrestatore = ['via roma', '12345', 'roma', 'rm'];
+$sedePrestatore = ['via roma', '12345', 'roma', 'RM'];
 
 $cedentePrestatore = [$anagraficaPrestatore, $sedePrestatore];
 
-$anagraficaCommittente = ['12345678910', 'cliente srl'];
-$sedeCommittente = ['via roma', '12345', 'roma', 'rm'];
+$anagraficaCommittente = ['12345678915', 'cliente srl'];
+$sedeCommittente = ['via roma', '12345', 'roma', 'RM'];
 
 $cessionarioCommittente = [$anagraficaCommittente, $sedeCommittente];
 
@@ -24,11 +24,11 @@ $header = [
     $cessionarioCommittente
 ];
 
-$datiGeneraliDocumento = ['123', '2021-01-01', '100.00'];
+$datiGeneraliDocumento = ['123', '2021-01-01', '345.22'];
 
 $datiGenerali = [$datiGeneraliDocumento];
 
-$dettaglioPagamento = ['100.00'];
+$dettaglioPagamento = ['345.22'];
 
 $datiDatiPagamento = [$dettaglioPagamento];
 
@@ -37,7 +37,18 @@ $body = [
     $datiDatiPagamento
 ];
 
-$datiXml = $fattura->create($header, $body, [], []);
+$dettaglioLinee = [
+    ['Test Riga 1', '100.50'],
+    ['Test Riga 2', '100.50'],
+    ['Test Riga 3', '100.00', '1', 'pz', '0.00', 'N2.1'],
+];
+
+$datiRiepilogo = [
+    ['201.00', '22.00'],
+    ['100.00', '0.00', 'N2.1'],
+];
+
+$datiXml = $fattura->create($header, $body, $dettaglioLinee, $datiRiepilogo);
 
 var_dump($datiXml);
 

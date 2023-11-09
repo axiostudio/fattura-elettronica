@@ -4,6 +4,7 @@ namespace Axiostudio\FatturaElettronica\Handlers;
 
 use Axiostudio\FatturaElettronica\Handlers\Xml;
 use Axiostudio\FatturaElettronica\Handlers\Model;
+use Axiostudio\FatturaElettronica\Models\DatiRiepilogo;
 use Axiostudio\FatturaElettronica\Models\DettaglioLinee;
 
 trait DataDatiBeniServizi
@@ -18,14 +19,14 @@ trait DataDatiBeniServizi
         foreach ($DettaglioLinee as $numero => $linea) {
             $data = $this->createModel(new DettaglioLinee(...$linea), true);
             $data['NumeroLinea'] = $numero + 1;
-            $DettaglioLineeBlock .= '<DettaglioLinee>' . $this->createXmlBlock($linea) . '</DettaglioLinee>';
+            $DettaglioLineeBlock .= '<DettaglioLinee>' . $this->createXmlBlock($data) . '</DettaglioLinee>';
         }
 
         $DatiRiepilogoBlock = '';
 
         foreach ($DatiRiepilogo as $dato) {
-            $data = $this->createModel(new DatiRiepilogo($dato), true);
-            $DatiRiepilogoBlock .= '<DatiRiepilogo>' . $this->createXmlBlock($dato) . '</DatiRiepilogo>';
+            $data = $this->createModel(new DatiRiepilogo(...$dato), true);
+            $DatiRiepilogoBlock .= '<DatiRiepilogo>' . $this->createXmlBlock($data) . '</DatiRiepilogo>';
         }
 
         $xml = str_replace('<DataDatiBeniServizi></DataDatiBeniServizi>', $DettaglioLineeBlock . $DatiRiepilogoBlock, $Xml);

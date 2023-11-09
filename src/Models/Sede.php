@@ -18,7 +18,7 @@ class Sede extends Model
     public function __construct(...$args)
     {
         $this->Indirizzo = $args[0];
-        $this->Cap = $args[1];
+        $this->CAP = $args[1];
         $this->Comune = $args[2];
         $this->Provincia = (isset($args[3]) && $args[3]) ? $args[3] : null;
         $this->Nazione = (isset($args[4]) && $args[4]) ? $args[4] : Settings::IdPaeseDefault();

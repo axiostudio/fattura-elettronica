@@ -13,6 +13,7 @@ class DatiRiepilogo extends Model
     public float $AliquotaIVA;
     public ?string $Natura;
     public ?string $EsigibilitaIVA;
+    public float $Imposta;
 
     public function __construct(...$args)
     {
@@ -24,6 +25,8 @@ class DatiRiepilogo extends Model
         } else {
             $this->EsigibilitaIVA = (isset($args[3]) && $args[3]) ? $args[3] : Settings::EsigibilitaIVADefault();
         }
+
+        $this->Imposta = $this->ImponibileImporto * $this->AliquotaIVA / 100;
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
