@@ -11,7 +11,7 @@ class DatiBeniServizi extends Model
 
     public function __construct(...$args)
     {
-        // Data will be replaced in the main Class
+        // Data will be managed into DataDatiBeniServizi Handler
         $this->DataDatiBeniServizi = null;
     }
 
