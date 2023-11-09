@@ -37,7 +37,7 @@ $body = [
     $datiDatiPagamento
 ];
 
-$datiXml = $fattura->create($header, $body);
+$datiXml = $fattura->create($header, $body, [], []);
 
 var_dump($datiXml);
 

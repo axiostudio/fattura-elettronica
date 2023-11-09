@@ -22,4 +22,20 @@ trait Xml
 
         return $xml;
     }
+
+    public function createXmlBlock(array $array): string
+    {
+        $xml = ArrayToXml::convert($array);
+
+        return $this->updateXmlBlock($xml);
+    }
+
+    protected function updateXmlBlock(string $xml): string
+    {
+        $xml = str_replace('<?xml version="1.0"?>', '', $xml);
+        $xml = str_replace('<root>', '', $xml);
+        $xml = str_replace('</root>', '', $xml);
+
+        return $xml;
+    }
 }
