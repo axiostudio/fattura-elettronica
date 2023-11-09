@@ -7,21 +7,6 @@ use Axiostudio\FatturaElettronica\Abstracts\Model;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
-/* 
-$linee[] = new \Deved\FatturaElettronica\FatturaElettronica\FatturaElettronicaBody\DatiBeniServizi\Linea(
-    $linea['descrizione'],
-    $linea['prezzoUnitario'],
-    $codiceArticolo,
-    $quantita,
-    $unitaMisura,
-    $aliquotaIva,
-    $codiceTipo,
-    request()->omnifyCompany['decimali'],
-    $tipoCessionePrestazione,
-    $natura,
-);
-*/
-
 class DettaglioLinee extends Model
 {
     public string $Descrizione;

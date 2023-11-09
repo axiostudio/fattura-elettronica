@@ -89,6 +89,16 @@ class Settings
         return 22.00;
     }
 
+    public static function EsigibilitaIVA(): array
+    {
+        return ['I', 'D', 'S'];
+    }
+
+    public static function EsigibilitaIVADefault(): string
+    {
+        return 'I';
+    }
+
     public static function CodiceDestinatarioDefault(): string
     {
         return '0000000';
