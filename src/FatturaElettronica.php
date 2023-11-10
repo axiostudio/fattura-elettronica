@@ -29,7 +29,7 @@ class FatturaElettronica
         return $this->createXml($fattura);
     }
 
-    public function create(
+    protected function create(
         array $FatturaElettronicaHeader,
         array $FatturaElettronicaBody,
         array $DettaglioLinee,
@@ -43,5 +43,19 @@ class FatturaElettronica
             'fileContent' => $xmlContent,
             'fileName' => $this->fileName($FatturaElettronicaHeader)
         ];
+    }
+
+    public function compose(
+        array $FatturaElettronicaHeader,
+        array $FatturaElettronicaBody,
+        array $DettaglioLinee,
+        array $DatiRiepilogo
+    ): array {
+        return $this->create(
+            $FatturaElettronicaHeader,
+            $FatturaElettronicaBody,
+            $DettaglioLinee,
+            $DatiRiepilogo
+        );
     }
 }

@@ -50,7 +50,7 @@ $datiRiepilogo = [
 
 // TODO -> Fattura -> COMPOSE( passando dati e creando struttura per create !!!)
 
-$datiXml = $fattura->create($header, $body, $dettaglioLinee, $datiRiepilogo);
+$datiXml = $fattura->compose($header, $body, $dettaglioLinee, $datiRiepilogo);
 
 var_dump($datiXml);
 
