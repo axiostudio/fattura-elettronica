@@ -1,29 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
-/*
- * This file is part of PHP CS Fixer.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- * Dariusz Rumiński <dariusz.ruminski@gmail.com>
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
- */
-
 namespace Axiostudio\FatturaElettronica\Tests;
 
 use Axiostudio\FatturaElettronica\Models\DettaglioPagamento;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validation;
 
-/**
- * @internal
- *
- * @coversNothing
- */
-final class DettaglioPagamentoTest extends TestCase
+class DettaglioPagamentoTest extends TestCase
 {
     public function testConstructorWithIBAN(): void
     {
@@ -53,18 +36,18 @@ final class DettaglioPagamentoTest extends TestCase
             $modalitaPagamento
         );
 
-        self::assertInstanceOf(DettaglioPagamento::class, $dettaglioPagamento);
-        self::assertSame($importoPagamento, $dettaglioPagamento->ImportoPagamento);
-        self::assertSame($dataScadenzaPagamento, $dettaglioPagamento->DataScadenzaPagamento);
-        self::assertSame($dataRiferimentoTerminiPagamento, $dettaglioPagamento->DataRiferimentoTerminiPagamento);
-        self::assertSame($giorniTerminiPagamento, $dettaglioPagamento->GiorniTerminiPagamento);
-        self::assertSame($beneficiario, $dettaglioPagamento->Beneficiario);
-        self::assertSame($istitutoFinanziario, $dettaglioPagamento->IstituroFinanziario);
-        self::assertSame($iban, $dettaglioPagamento->IBAN);
-        self::assertSame($abi, $dettaglioPagamento->ABI);
-        self::assertSame($cab, $dettaglioPagamento->CAB);
-        self::assertSame($bic, $dettaglioPagamento->BIC);
-        self::assertSame($modalitaPagamento, $dettaglioPagamento->ModalitaPagamento);
+        $this->assertInstanceOf(DettaglioPagamento::class, $dettaglioPagamento);
+        $this->assertEquals($importoPagamento, $dettaglioPagamento->ImportoPagamento);
+        $this->assertEquals($dataScadenzaPagamento, $dettaglioPagamento->DataScadenzaPagamento);
+        $this->assertEquals($dataRiferimentoTerminiPagamento, $dettaglioPagamento->DataRiferimentoTerminiPagamento);
+        $this->assertEquals($giorniTerminiPagamento, $dettaglioPagamento->GiorniTerminiPagamento);
+        $this->assertEquals($beneficiario, $dettaglioPagamento->Beneficiario);
+        $this->assertEquals($istitutoFinanziario, $dettaglioPagamento->IstituroFinanziario);
+        $this->assertEquals($iban, $dettaglioPagamento->IBAN);
+        $this->assertEquals($abi, $dettaglioPagamento->ABI);
+        $this->assertEquals($cab, $dettaglioPagamento->CAB);
+        $this->assertEquals($bic, $dettaglioPagamento->BIC);
+        $this->assertEquals($modalitaPagamento, $dettaglioPagamento->ModalitaPagamento);
     }
 
     public function testConstructorWithoutIBAN(): void
@@ -91,14 +74,14 @@ final class DettaglioPagamentoTest extends TestCase
             $modalitaPagamento
         );
 
-        self::assertInstanceOf(DettaglioPagamento::class, $dettaglioPagamento);
-        self::assertSame($importoPagamento, $dettaglioPagamento->ImportoPagamento);
-        self::assertSame($dataScadenzaPagamento, $dettaglioPagamento->DataScadenzaPagamento);
-        self::assertSame($dataRiferimentoTerminiPagamento, $dettaglioPagamento->DataRiferimentoTerminiPagamento);
-        self::assertSame($giorniTerminiPagamento, $dettaglioPagamento->GiorniTerminiPagamento);
-        self::assertSame($beneficiario, $dettaglioPagamento->Beneficiario);
-        self::assertSame($istitutoFinanziario, $dettaglioPagamento->IstituroFinanziario);
-        self::assertSame($modalitaPagamento, $dettaglioPagamento->ModalitaPagamento);
+        $this->assertInstanceOf(DettaglioPagamento::class, $dettaglioPagamento);
+        $this->assertEquals($importoPagamento, $dettaglioPagamento->ImportoPagamento);
+        $this->assertEquals($dataScadenzaPagamento, $dettaglioPagamento->DataScadenzaPagamento);
+        $this->assertEquals($dataRiferimentoTerminiPagamento, $dettaglioPagamento->DataRiferimentoTerminiPagamento);
+        $this->assertEquals($giorniTerminiPagamento, $dettaglioPagamento->GiorniTerminiPagamento);
+        $this->assertEquals($beneficiario, $dettaglioPagamento->Beneficiario);
+        $this->assertEquals($istitutoFinanziario, $dettaglioPagamento->IstituroFinanziario);
+        $this->assertEquals($modalitaPagamento, $dettaglioPagamento->ModalitaPagamento);
     }
 
     public function testValidation(): void
@@ -109,6 +92,6 @@ final class DettaglioPagamentoTest extends TestCase
 
         $violations = $validator->validate($dettaglioPagamento);
 
-        self::assertCount(0, $violations);
+        $this->assertCount(0, $violations);
     }
 }

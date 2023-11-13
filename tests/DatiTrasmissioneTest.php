@@ -1,17 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
-/*
- * This file is part of PHP CS Fixer.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- * Dariusz Rumiński <dariusz.ruminski@gmail.com>
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
- */
-
 namespace Axiostudio\FatturaElettronica\Tests;
 
 use Axiostudio\FatturaElettronica\Models\DatiTrasmissione;
@@ -19,12 +7,7 @@ use Axiostudio\FatturaElettronica\Models\Id;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validation;
 
-/**
- * @internal
- *
- * @coversNothing
- */
-final class DatiTrasmissioneTest extends TestCase
+class DatiTrasmissioneTest extends TestCase
 {
     public function testConstructorWithEmailPECDestinatario(): void
     {
@@ -37,12 +20,12 @@ final class DatiTrasmissioneTest extends TestCase
 
         $datiTrasmissione = new DatiTrasmissione($id, $progressivoInvio, $codiceDestinatario, $pecDestinatario, $formatoTrasmissione);
 
-        self::assertInstanceOf(DatiTrasmissione::class, $datiTrasmissione);
-        self::assertInstanceOf(Id::class, $datiTrasmissione->IdTrasmittente);
-        self::assertSame($progressivoInvio, $datiTrasmissione->ProgressivoInvio);
-        self::assertSame($codiceDestinatario, $datiTrasmissione->CodiceDestinatario);
-        self::assertSame($pecDestinatario, $datiTrasmissione->PECDestinatario);
-        self::assertSame($formatoTrasmissione, $datiTrasmissione->FormatoTrasmissione);
+        $this->assertInstanceOf(DatiTrasmissione::class, $datiTrasmissione);
+        $this->assertInstanceOf(Id::class, $datiTrasmissione->IdTrasmittente);
+        $this->assertEquals($progressivoInvio, $datiTrasmissione->ProgressivoInvio);
+        $this->assertEquals($codiceDestinatario, $datiTrasmissione->CodiceDestinatario);
+        $this->assertEquals($pecDestinatario, $datiTrasmissione->PECDestinatario);
+        $this->assertEquals($formatoTrasmissione, $datiTrasmissione->FormatoTrasmissione);
     }
 
     public function testConstructorWithoutEmailPECDestinatario(): void
@@ -55,11 +38,11 @@ final class DatiTrasmissioneTest extends TestCase
 
         $datiTrasmissione = new DatiTrasmissione($id, $progressivoInvio, $codiceDestinatario, null, $formatoTrasmissione);
 
-        self::assertInstanceOf(DatiTrasmissione::class, $datiTrasmissione);
-        self::assertInstanceOf(Id::class, $datiTrasmissione->IdTrasmittente);
-        self::assertSame($progressivoInvio, $datiTrasmissione->ProgressivoInvio);
-        self::assertSame($codiceDestinatario, $datiTrasmissione->CodiceDestinatario);
-        self::assertSame($formatoTrasmissione, $datiTrasmissione->FormatoTrasmissione);
+        $this->assertInstanceOf(DatiTrasmissione::class, $datiTrasmissione);
+        $this->assertInstanceOf(Id::class, $datiTrasmissione->IdTrasmittente);
+        $this->assertEquals($progressivoInvio, $datiTrasmissione->ProgressivoInvio);
+        $this->assertEquals($codiceDestinatario, $datiTrasmissione->CodiceDestinatario);
+        $this->assertEquals($formatoTrasmissione, $datiTrasmissione->FormatoTrasmissione);
     }
 
     public function testValidation(): void
@@ -72,6 +55,6 @@ final class DatiTrasmissioneTest extends TestCase
 
         $violations = $validator->validate($datiTrasmissione);
 
-        self::assertCount(0, $violations);
+        $this->assertCount(0, $violations);
     }
 }
