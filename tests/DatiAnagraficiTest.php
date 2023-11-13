@@ -1,13 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ * Dariusz Rumiński <dariusz.ruminski@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Axiostudio\FatturaElettronica\Tests;
 
+use Axiostudio\FatturaElettronica\Models\Anagrafica;
 use Axiostudio\FatturaElettronica\Models\DatiAnagrafici;
 use Axiostudio\FatturaElettronica\Models\Id;
-use Axiostudio\FatturaElettronica\Models\Anagrafica;
 use PHPUnit\Framework\TestCase;
 
-class DatiAnagraficiTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class DatiAnagraficiTest extends TestCase
 {
     public function testConstructor(): void
     {
@@ -19,10 +36,10 @@ class DatiAnagraficiTest extends TestCase
 
         $datiAnagrafici = new DatiAnagrafici($id, $anagrafica, $codiceFiscale, $regimeFiscale);
 
-        $this->assertInstanceOf(DatiAnagrafici::class, $datiAnagrafici);
-        $this->assertInstanceOf(Id::class, $datiAnagrafici->IdFiscaleIVA);
-        $this->assertInstanceOf(Anagrafica::class, $datiAnagrafici->Anagrafica);
-        $this->assertEquals($codiceFiscale, $datiAnagrafici->CodiceFiscale);
-        $this->assertEquals($regimeFiscale, $datiAnagrafici->RegimeFiscale);
+        self::assertInstanceOf(DatiAnagrafici::class, $datiAnagrafici);
+        self::assertInstanceOf(Id::class, $datiAnagrafici->IdFiscaleIVA);
+        self::assertInstanceOf(Anagrafica::class, $datiAnagrafici->Anagrafica);
+        self::assertSame($codiceFiscale, $datiAnagrafici->CodiceFiscale);
+        self::assertSame($regimeFiscale, $datiAnagrafici->RegimeFiscale);
     }
 }

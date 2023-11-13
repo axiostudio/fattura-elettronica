@@ -1,12 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ * Dariusz Rumiński <dariusz.ruminski@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Axiostudio\FatturaElettronica\Tests;
 
 use Axiostudio\FatturaElettronica\Models\DettaglioLinee;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validation;
 
-class DettaglioLineeTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class DettaglioLineeTest extends TestCase
 {
     public function testConstructorWithNatura(): void
     {
@@ -19,14 +36,14 @@ class DettaglioLineeTest extends TestCase
 
         $dettaglioLinee = new DettaglioLinee($descrizione, $prezzoUnitario, $quantita, $unitaMisura, $aliquotaIVA, $natura);
 
-        $this->assertInstanceOf(DettaglioLinee::class, $dettaglioLinee);
-        $this->assertEquals($descrizione, $dettaglioLinee->Descrizione);
-        $this->assertEquals($prezzoUnitario, $dettaglioLinee->PrezzoUnitario);
-        $this->assertEquals($quantita, $dettaglioLinee->Quantita);
-        $this->assertEquals($unitaMisura, $dettaglioLinee->UnitaMisura);
-        $this->assertEquals($aliquotaIVA, $dettaglioLinee->AliquotaIVA);
-        $this->assertEquals($prezzoUnitario * $quantita, $dettaglioLinee->PrezzoTotale);
-        $this->assertEquals($natura, $dettaglioLinee->Natura);
+        self::assertInstanceOf(DettaglioLinee::class, $dettaglioLinee);
+        self::assertSame($descrizione, $dettaglioLinee->Descrizione);
+        self::assertSame($prezzoUnitario, $dettaglioLinee->PrezzoUnitario);
+        self::assertSame($quantita, $dettaglioLinee->Quantita);
+        self::assertSame($unitaMisura, $dettaglioLinee->UnitaMisura);
+        self::assertSame($aliquotaIVA, $dettaglioLinee->AliquotaIVA);
+        self::assertSame($prezzoUnitario * $quantita, $dettaglioLinee->PrezzoTotale);
+        self::assertSame($natura, $dettaglioLinee->Natura);
     }
 
     public function testConstructorWithoutNatura(): void
@@ -39,13 +56,13 @@ class DettaglioLineeTest extends TestCase
 
         $dettaglioLinee = new DettaglioLinee($descrizione, $prezzoUnitario, $quantita, $unitaMisura, $aliquotaIVA);
 
-        $this->assertInstanceOf(DettaglioLinee::class, $dettaglioLinee);
-        $this->assertEquals($descrizione, $dettaglioLinee->Descrizione);
-        $this->assertEquals($prezzoUnitario, $dettaglioLinee->PrezzoUnitario);
-        $this->assertEquals($quantita, $dettaglioLinee->Quantita);
-        $this->assertEquals($unitaMisura, $dettaglioLinee->UnitaMisura);
-        $this->assertEquals($aliquotaIVA, $dettaglioLinee->AliquotaIVA);
-        $this->assertEquals($prezzoUnitario * $quantita, $dettaglioLinee->PrezzoTotale);
+        self::assertInstanceOf(DettaglioLinee::class, $dettaglioLinee);
+        self::assertSame($descrizione, $dettaglioLinee->Descrizione);
+        self::assertSame($prezzoUnitario, $dettaglioLinee->PrezzoUnitario);
+        self::assertSame($quantita, $dettaglioLinee->Quantita);
+        self::assertSame($unitaMisura, $dettaglioLinee->UnitaMisura);
+        self::assertSame($aliquotaIVA, $dettaglioLinee->AliquotaIVA);
+        self::assertSame($prezzoUnitario * $quantita, $dettaglioLinee->PrezzoTotale);
     }
 
     public function testValidation(): void
@@ -56,6 +73,6 @@ class DettaglioLineeTest extends TestCase
 
         $violations = $validator->validate($dettaglioLinee);
 
-        $this->assertCount(0, $violations);
+        self::assertCount(0, $violations);
     }
 }

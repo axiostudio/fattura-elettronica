@@ -1,5 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ * Dariusz Rumiński <dariusz.ruminski@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Axiostudio\FatturaElettronica\Tests;
 
 use Axiostudio\FatturaElettronica\Models\Sede;
@@ -7,7 +19,12 @@ use Axiostudio\FatturaElettronica\Settings;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validation;
 
-class SedeTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class SedeTest extends TestCase
 {
     public function testConstructorWithProvinciaAndNazione(): void
     {
@@ -19,12 +36,12 @@ class SedeTest extends TestCase
 
         $sede = new Sede($indirizzo, $cap, $comune, $provincia, $nazione);
 
-        $this->assertInstanceOf(Sede::class, $sede);
-        $this->assertEquals($indirizzo, $sede->Indirizzo);
-        $this->assertEquals($cap, $sede->CAP);
-        $this->assertEquals($comune, $sede->Comune);
-        $this->assertEquals($provincia, $sede->Provincia);
-        $this->assertEquals($nazione, $sede->Nazione);
+        self::assertInstanceOf(Sede::class, $sede);
+        self::assertSame($indirizzo, $sede->Indirizzo);
+        self::assertSame($cap, $sede->CAP);
+        self::assertSame($comune, $sede->Comune);
+        self::assertSame($provincia, $sede->Provincia);
+        self::assertSame($nazione, $sede->Nazione);
     }
 
     public function testConstructorWithoutProvinciaAndNazione(): void
@@ -35,12 +52,12 @@ class SedeTest extends TestCase
 
         $sede = new Sede($indirizzo, $cap, $comune);
 
-        $this->assertInstanceOf(Sede::class, $sede);
-        $this->assertEquals($indirizzo, $sede->Indirizzo);
-        $this->assertEquals($cap, $sede->CAP);
-        $this->assertEquals($comune, $sede->Comune);
-        $this->assertNull($sede->Provincia);
-        $this->assertEquals(Settings::IdPaeseDefault(), $sede->Nazione);
+        self::assertInstanceOf(Sede::class, $sede);
+        self::assertSame($indirizzo, $sede->Indirizzo);
+        self::assertSame($cap, $sede->CAP);
+        self::assertSame($comune, $sede->Comune);
+        self::assertNull($sede->Provincia);
+        self::assertSame(Settings::IdPaeseDefault(), $sede->Nazione);
     }
 
     public function testValidation(): void
@@ -51,6 +68,6 @@ class SedeTest extends TestCase
 
         $violations = $validator->validate($sede);
 
-        $this->assertCount(0, $violations);
+        self::assertCount(0, $violations);
     }
 }

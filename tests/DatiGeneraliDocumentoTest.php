@@ -1,5 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ * Dariusz Rumiński <dariusz.ruminski@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Axiostudio\FatturaElettronica\Tests;
 
 use Axiostudio\FatturaElettronica\Models\DatiGeneraliDocumento;
@@ -7,7 +19,12 @@ use Axiostudio\FatturaElettronica\Settings;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validation;
 
-class DatiGeneraliDocumentoTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class DatiGeneraliDocumentoTest extends TestCase
 {
     public function testConstructor(): void
     {
@@ -17,13 +34,13 @@ class DatiGeneraliDocumentoTest extends TestCase
 
         $datiGeneraliDocumento = new DatiGeneraliDocumento($numero, $data, $importoTotaleDocumento);
 
-        $this->assertInstanceOf(DatiGeneraliDocumento::class, $datiGeneraliDocumento);
-        $this->assertEquals($numero, $datiGeneraliDocumento->Numero);
-        $this->assertEquals($data, $datiGeneraliDocumento->Data);
-        $this->assertEquals($importoTotaleDocumento, $datiGeneraliDocumento->ImportoTotaleDocumento);
-        $this->assertEquals(Settings::CausaleDefault(), $datiGeneraliDocumento->Causale);
-        $this->assertEquals(Settings::TipoDocumentoDefault(), $datiGeneraliDocumento->TipoDocumento);
-        $this->assertEquals(Settings::ValutaDefault(), $datiGeneraliDocumento->Divisa);
+        self::assertInstanceOf(DatiGeneraliDocumento::class, $datiGeneraliDocumento);
+        self::assertSame($numero, $datiGeneraliDocumento->Numero);
+        self::assertSame($data, $datiGeneraliDocumento->Data);
+        self::assertSame($importoTotaleDocumento, $datiGeneraliDocumento->ImportoTotaleDocumento);
+        self::assertSame(Settings::CausaleDefault(), $datiGeneraliDocumento->Causale);
+        self::assertSame(Settings::TipoDocumentoDefault(), $datiGeneraliDocumento->TipoDocumento);
+        self::assertSame(Settings::ValutaDefault(), $datiGeneraliDocumento->Divisa);
     }
 
     public function testValidation(): void
@@ -34,6 +51,6 @@ class DatiGeneraliDocumentoTest extends TestCase
 
         $violations = $validator->validate($datiGeneraliDocumento);
 
-        $this->assertCount(0, $violations);
+        self::assertCount(0, $violations);
     }
 }

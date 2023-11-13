@@ -1,5 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ * Dariusz Rumiński <dariusz.ruminski@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Axiostudio\FatturaElettronica\Tests;
 
 use Axiostudio\FatturaElettronica\Models\Id;
@@ -7,7 +19,12 @@ use Axiostudio\FatturaElettronica\Settings;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validation;
 
-class IdTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class IdTest extends TestCase
 {
     public function testConstructorWithIdPaese(): void
     {
@@ -16,9 +33,9 @@ class IdTest extends TestCase
 
         $id = new Id($idCodice, $idPaese);
 
-        $this->assertInstanceOf(Id::class, $id);
-        $this->assertEquals($idCodice, $id->IdCodice);
-        $this->assertEquals($idPaese, $id->IdPaese);
+        self::assertInstanceOf(Id::class, $id);
+        self::assertSame($idCodice, $id->IdCodice);
+        self::assertSame($idPaese, $id->IdPaese);
     }
 
     public function testConstructorWithoutIdPaese(): void
@@ -27,9 +44,9 @@ class IdTest extends TestCase
 
         $id = new Id($idCodice);
 
-        $this->assertInstanceOf(Id::class, $id);
-        $this->assertEquals($idCodice, $id->IdCodice);
-        $this->assertEquals(Settings::IdPaeseDefault(), $id->IdPaese);
+        self::assertInstanceOf(Id::class, $id);
+        self::assertSame($idCodice, $id->IdCodice);
+        self::assertSame(Settings::IdPaeseDefault(), $id->IdPaese);
     }
 
     public function testValidation(): void
@@ -40,6 +57,6 @@ class IdTest extends TestCase
 
         $violations = $validator->validate($id);
 
-        $this->assertCount(0, $violations);
+        self::assertCount(0, $violations);
     }
 }
