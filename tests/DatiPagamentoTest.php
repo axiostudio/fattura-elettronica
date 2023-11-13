@@ -6,7 +6,6 @@ use Axiostudio\FatturaElettronica\Models\DettaglioPagamento;
 use Axiostudio\FatturaElettronica\Models\DatiPagamento;
 use Axiostudio\FatturaElettronica\Settings;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Validator\Validation;
 
 class DatiPagamentoTest extends TestCase
 {
