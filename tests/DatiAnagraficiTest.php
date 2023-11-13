@@ -1,13 +1,11 @@
 <?php
 
-namespace Tests\Axiostudio\FatturaElettronica\Models;
+namespace Axiostudio\FatturaElettronica\Tests;
 
 use Axiostudio\FatturaElettronica\Models\DatiAnagrafici;
 use Axiostudio\FatturaElettronica\Models\Id;
 use Axiostudio\FatturaElettronica\Models\Anagrafica;
-use Axiostudio\FatturaElettronica\Settings;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Validator\Validation;
 
 class DatiAnagraficiTest extends TestCase
 {
