@@ -1,4 +1,4 @@
-name: fix-style
+name: CS Fixer
 
 on:
   push:
