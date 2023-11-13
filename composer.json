@@ -19,6 +19,11 @@
         "spatie/array-to-xml": "^3.2",
         "symfony/validator": "^6.3"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "phpmd/phpmd" : "@stable",
+        "friendsofphp/php-cs-fixer": "^2.6"
+    },
     "autoload": {
         "psr-4": {
             "Axiostudio\\FatturaElettronica\\": "src"
@@ -28,6 +33,11 @@
         "psr-4": {
             "Axiostudio\\FatturaElettronica\\Tests\\": "tests"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
     },
     "config": {
         "sort-packages": true

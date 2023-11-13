@@ -2,6 +2,6 @@
 
 All notable changes to `fattura-elettronica` will be documented in this file
 
-## beta - 2023-11-06
+## beta - Versione Bea
 
-- initial release
+- Versione iniziale "beta" con funzionalità base

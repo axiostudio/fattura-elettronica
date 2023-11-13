@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Axiostudio\\FatturaElettronica\\Tests\\AnagraficaTest::testConstructorWithNullValues":4},"times":{"Axiostudio\\FatturaElettronica\\Tests\\AnagraficaTest::testConstructor":0.002,"Axiostudio\\FatturaElettronica\\Tests\\AnagraficaTest::testConstructorWithNullValues":0.001}}
