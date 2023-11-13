@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 class Sede extends Model
 {
     public string $Indirizzo;
-    public string $Cap;
+    public string $CAP;
     public string $Comune;
     public ?string $Provincia;
     public ?string $Nazione;
