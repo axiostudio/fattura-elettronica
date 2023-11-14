@@ -31,6 +31,8 @@ $fattura = new \Axiostudio\FatturaElettronica\FatturaElettronica();
 
 Successivamente bisogna passare i dati necessari al metodo "compose" che ci restituirà un array contente un parametro `fileName` che dichiara il nome del file XML generato e un parametro `fileContent` che contiene in formato string l'XML generato.
 
+Per generare la fattura è necessario richiamare il metodo `compose()` passando al suo interno i dati necessari alla fattura che saranno parsati, computati e convertiti in formato XML secondo le specifiche.
+
 Ricordiamo che il pacchetto è in fase BETA, le specifiche dei vari Model utilizzati saranno documentati nella versione 1.0. Di seguito un esempio di utilizzo:
 
 ```php
