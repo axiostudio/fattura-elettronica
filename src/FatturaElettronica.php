@@ -47,13 +47,25 @@ class FatturaElettronica
 
     public function compose(
         array $datiTrasmissione,
-        array $cedentePrestatore,
-        array $cessionarioCommittente,
+        array $anagraficaPrestatore,
+        array $sedePrestatore,
+        array $anagraficaCommittente,
+        array $sedeCommittente,
         array $datiGenerali,
         array $datiDatiPagamento,
         array $DettaglioLinee,
         array $DatiRiepilogo
     ): array {
+
+        $cedentePrestatore = [
+            $anagraficaPrestatore,
+            $sedePrestatore
+        ];
+
+        $cessionarioCommittente = [
+            $anagraficaCommittente,
+            $sedeCommittente
+        ];
 
         $FatturaElettronicaHeader = [
             $datiTrasmissione,

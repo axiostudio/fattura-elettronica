@@ -8,19 +8,40 @@ use Axiostudio\FatturaElettronica\FatturaElettronica;
 
 $fattura = new FatturaElettronica();
 
-$datiTrasmissione = ['12345678910', '123'];
+$datiTrasmissione = [
+    '12345678910',
+    '123'
+];
 
-$anagraficaPrestatore = ['12345678910', 'fornitore srl'];
-$sedePrestatore = ['via roma', '12345', 'roma', 'RM'];
+$anagraficaPrestatore = [
+    '12345678910',
+    'fornitore srl'
+];
 
-$cedentePrestatore = [$anagraficaPrestatore, $sedePrestatore];
+$sedePrestatore = [
+    'via roma',
+    '12345',
+    'roma',
+    'RM'
+];
 
-$anagraficaCommittente = ['12345678915', 'cliente srl'];
-$sedeCommittente = ['via roma', '12345', 'roma', 'RM'];
+$anagraficaCommittente = [
+    '12345678915',
+    'cliente srl'
+];
 
-$cessionarioCommittente = [$anagraficaCommittente, $sedeCommittente];
+$sedeCommittente = [
+    'via roma',
+    '12345',
+    'roma',
+    'RM'
+];
 
-$datiGeneraliDocumento = ['123', '2021-01-01', '345.22'];
+$datiGeneraliDocumento = [
+    '123',
+    '2021-01-01',
+    '345.22'
+];
 
 $datiGenerali = [$datiGeneraliDocumento];
 
@@ -41,8 +62,10 @@ $datiRiepilogo = [
 
 $datiXml = $fattura->compose(
     $datiTrasmissione,
-    $cedentePrestatore,
-    $cessionarioCommittente,
+    $anagraficaPrestatore,
+    $sedePrestatore,
+    $anagraficaCommittente,
+    $sedeCommittente,
     $datiGenerali,
     $datiDatiPagamento,
     $dettaglioLinee,
