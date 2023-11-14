@@ -13,7 +13,7 @@ Fattura Elettronica è un pacchetto PHP che consente di generare all'interno del
 - Composer 2
 - PHP 8.1 o 8.2
 
-## Installazione
+## Installazione
 
 Per installare il pacchetto eseguire:
 
