@@ -46,11 +46,26 @@ class FatturaElettronica
     }
 
     public function compose(
-        array $FatturaElettronicaHeader,
-        array $FatturaElettronicaBody,
+        array $datiTrasmissione,
+        array $cedentePrestatore,
+        array $cessionarioCommittente,
+        array $datiGenerali,
+        array $datiDatiPagamento,
         array $DettaglioLinee,
         array $DatiRiepilogo
     ): array {
+
+        $FatturaElettronicaHeader = [
+            $datiTrasmissione,
+            $cedentePrestatore,
+            $cessionarioCommittente
+        ];
+
+        $FatturaElettronicaBody = [
+            $datiGenerali,
+            $datiDatiPagamento
+        ];
+
         return $this->create(
             $FatturaElettronicaHeader,
             $FatturaElettronicaBody,
