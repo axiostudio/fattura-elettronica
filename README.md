@@ -11,7 +11,7 @@ Fattura Elettronica è un pacchetto PHP che consente di generare all'interno del
 ## Requisiti
 
 - Composer 2
-- PHP 8.1 o 8.2
+- PHP (dalla versione 8.1 in poi)
 
 ## Installazione
 
@@ -33,7 +33,167 @@ Successivamente bisogna passare i dati necessari al metodo "compose" che ci rest
 
 Per generare la fattura è necessario richiamare il metodo `compose()` passando al suo interno i dati necessari alla fattura che saranno parsati, computati e convertiti in formato XML secondo le specifiche.
 
-Ricordiamo che il pacchetto è in fase BETA, le specifiche dei vari Model utilizzati saranno documentati nella versione 1.0. Di seguito un esempio di utilizzo:
+La funzione "compose" necessita dei seguenti oggetti, nel seguente ordine per comporre la fattura:
+
+- $datiTrasmissione,
+- $anagraficaPrestatore,
+- $sedePrestatore,
+- $anagraficaCommittente,
+- $sedeCommittente,
+- $datiGenerali,
+- $datiDatiPagamento,
+- $dettaglioLinee,
+- $datiRiepilogo
+
+Ogni oggetto ha una specifica struct con dati obbligatori e dati opzionali. Di seguito la descrizione di essi:
+
+#### DatiAnagrafici
+
+```
+public Id $IdFiscaleIVA;
+public Anagrafica $Anagrafica;
+public ?string $CodiceFiscale;
+public ?string $RegimeFiscale;
+```
+
+#### Id
+
+```
+public string $IdCodice;
+public ?string $IdPaese;
+```
+
+#### Anagrafica
+
+```
+public ?string $Denominazione;
+public ?string $Nome;
+public ?string $Cognome;
+```
+
+#### CedentePrestatore
+
+```
+public DatiAnagrafici $DatiAnagrafici;
+public Sede $Sede;
+```
+
+#### CessionarioCommittente
+
+```
+public DatiAnagrafici $DatiAnagrafici;
+public Sede $Sede;
+```
+
+#### Sede
+
+```
+public string $Indirizzo;
+public string $CAP;
+public string $Comune;
+public ?string $Provincia;
+public ?string $Nazione;
+```
+
+#### DatiGeneraliDocumento
+
+```
+public string $Numero;
+public string $Data;
+public float $ImportoTotaleDocumento;
+public ?string $Causale;
+public ?string $TipoDocumento;
+public ?string $Divisa;
+```
+
+#### DatiPagamento
+
+```
+public DettaglioPagamento $DettaglioPagamento;
+public ?string $CondizioniPagamento;
+```
+
+#### DettaglioPagamento
+
+```
+public float $ImportoPagamento;
+public ?string $DataScadenzaPagamento;
+public ?string $DataRiferimentoTerminiPagamento;
+public ?string $GiorniTerminiPagamento;
+public ?string $Beneficiario;
+public ?string $IstituroFinanziario;
+public ?string $IBAN;
+public ?string $ABI;
+public ?string $CAB;
+public ?string $BIC;
+public ?string $ModalitaPagamento;
+```
+
+#### DatiRiepilogo
+
+```
+public float $ImponibileImporto;
+public float $AliquotaIVA;
+public ?string $Natura;
+public ?string $EsigibilitaIVA;
+public float $Imposta;
+```
+
+#### DatiTrasmissione
+
+```
+public Id $IdTrasmittente;
+public string $ProgressivoInvio;
+public ?string $CodiceDestinatario;
+public ?string $PECDestinatario;
+public ?string $FormatoTrasmissione;
+```
+
+#### DettaglioLinee
+
+```
+public string $Descrizione;
+public float $PrezzoUnitario;
+public ?float $Quantita;
+public ?string $UnitaMisura;
+public ?float $AliquotaIVA;
+public ?string $Natura;
+public ?float $PrezzoTotale;
+```
+
+#### DettaglioPagamento
+
+```
+public float $ImportoPagamento;
+public ?string $DataScadenzaPagamento;
+public ?string $DataRiferimentoTerminiPagamento;
+public ?string $GiorniTerminiPagamento;
+public ?string $Beneficiario;
+public ?string $IstituroFinanziario;
+public ?string $IBAN;
+public ?string $ABI;
+public ?string $CAB;
+public ?string $BIC;
+public ?string $ModalitaPagamento;
+```
+
+Per inizializzare una fattura avremo quindi una struct di questo tipo:
+
+```php
+$datiXml = $fattura->compose(
+    $datiTrasmissione, // DatiTrasmissione
+    $anagraficaPrestatore,  // DatiAnagrafici
+    $sedePrestatore, // Sede
+    $anagraficaCommittente, // DatiAnagrafici
+    $sedeCommittente, // Sede
+    $datiGenerali, // DatiGeneraliDocumento
+    $datiDatiPagamento, // DatiPagamento
+    $dettaglioLinee, // [] DettaglioLinee
+    $datiRiepilogo // [] DatiRiepilogo
+);
+```
+
+Di seguito un semplice esempio di utilizzo:
 
 ```php
 $fattura = new FatturaElettronica();
@@ -107,7 +267,7 @@ var_dump($datiXml);
 
 ## Note
 
-Questo pacchetto è in versione BETA, per supporto o bug utilizzare le Issue di Github, per collaborare invece è sufficente aprire un PR con le specifiche dell'integrazione eseguita.
+Per supporto o bug utilizzare le Issue di Github, per collaborare invece è sufficente aprire un PR con le specifiche dell'integrazione eseguita.
 
 ## Credits
 
