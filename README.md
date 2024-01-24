@@ -71,20 +71,6 @@ public ?string $Nome;
 public ?string $Cognome;
 ```
 
-#### CedentePrestatore
-
-```
-public DatiAnagrafici $DatiAnagrafici;
-public Sede $Sede;
-```
-
-#### CessionarioCommittente
-
-```
-public DatiAnagrafici $DatiAnagrafici;
-public Sede $Sede;
-```
-
 #### Sede
 
 ```
@@ -177,6 +163,8 @@ public ?string $BIC;
 public ?string $ModalitaPagamento;
 ```
 
+### Inizializzazione di una nuova fattura
+
 Per inizializzare una fattura avremo quindi una struct di questo tipo:
 
 ```php
@@ -192,6 +180,8 @@ $datiXml = $fattura->compose(
     $datiRiepilogo // [] DatiRiepilogo
 );
 ```
+
+### Esempio completo
 
 Di seguito un semplice esempio di utilizzo:
 
