@@ -23,7 +23,7 @@ class DettaglioLinee extends Model
         $this->PrezzoUnitario = $args[1];
         $this->Quantita = (isset($args[2]) && $args[2]) ? $args[2] : Settings::QuantitaDefault();
         $this->UnitaMisura = (isset($args[3]) && $args[3]) ? $args[3] : Settings::UnitaMisuraDefault();
-        $this->AliquotaIVA = (isset($args[4]) && $args[4]) ? $args[4] : Settings::AliquotaIVADefault();
+        $this->AliquotaIVA = (isset($args[4])) ? $args[4] : Settings::AliquotaIVADefault();
         $this->PrezzoTotale = $this->PrezzoUnitario * $this->Quantita;
 
         if (isset($args[5]) && $args[5]) {
