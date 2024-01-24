@@ -43,7 +43,7 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "csfix": "php php-cs-fixer fix src --rules=@PSR12 --allow-risky=yes"
+        "cs-fix": "php php-cs-fixer fix src --rules=@PSR12 --allow-risky=yes"
 
     },
     "config": {
