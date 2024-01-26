@@ -14,7 +14,10 @@ class Id extends Model
 
     public function __construct(...$args)
     {
-        $this->IdCodice = $args[0];
+        if (isset($args[0]) && $args[0]) {
+            $this->IdCodice = $args[0];
+        }
+
         $this->IdPaese = (isset($args[1]) && $args[1]) ? $args[1] : Settings::IdPaeseDefault();
     }
 
