@@ -17,7 +17,7 @@ class DettaglioPagamento extends Model
     public ?string $DataRiferimentoTerminiPagamento;
     public ?string $GiorniTerminiPagamento;
     public ?string $Beneficiario;
-    public ?string $IstituroFinanziario;
+    public ?string $IstitutoFinanziario;
     public ?string $IBAN;
     public ?string $ABI;
     public ?string $CAB;
@@ -45,7 +45,7 @@ class DettaglioPagamento extends Model
         }
 
         if (isset($args[5]) && $args[5]) {
-            $this->IstituroFinanziario = $args[5];
+            $this->IstitutoFinanziario = $args[5];
         }
 
         if (isset($args[6]) && $args[6]) {

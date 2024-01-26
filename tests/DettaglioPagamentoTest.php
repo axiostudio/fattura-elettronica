@@ -42,7 +42,7 @@ class DettaglioPagamentoTest extends TestCase
         $this->assertEquals($dataRiferimentoTerminiPagamento, $dettaglioPagamento->DataRiferimentoTerminiPagamento);
         $this->assertEquals($giorniTerminiPagamento, $dettaglioPagamento->GiorniTerminiPagamento);
         $this->assertEquals($beneficiario, $dettaglioPagamento->Beneficiario);
-        $this->assertEquals($istitutoFinanziario, $dettaglioPagamento->IstituroFinanziario);
+        $this->assertEquals($istitutoFinanziario, $dettaglioPagamento->IstitutoFinanziario);
         $this->assertEquals($iban, $dettaglioPagamento->IBAN);
         $this->assertEquals($abi, $dettaglioPagamento->ABI);
         $this->assertEquals($cab, $dettaglioPagamento->CAB);
@@ -80,7 +80,7 @@ class DettaglioPagamentoTest extends TestCase
         $this->assertEquals($dataRiferimentoTerminiPagamento, $dettaglioPagamento->DataRiferimentoTerminiPagamento);
         $this->assertEquals($giorniTerminiPagamento, $dettaglioPagamento->GiorniTerminiPagamento);
         $this->assertEquals($beneficiario, $dettaglioPagamento->Beneficiario);
-        $this->assertEquals($istitutoFinanziario, $dettaglioPagamento->IstituroFinanziario);
+        $this->assertEquals($istitutoFinanziario, $dettaglioPagamento->IstitutoFinanziario);
         $this->assertEquals($modalitaPagamento, $dettaglioPagamento->ModalitaPagamento);
     }
 
