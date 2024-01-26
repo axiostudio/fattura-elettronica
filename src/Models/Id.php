@@ -14,6 +14,8 @@ class Id extends Model
 
     public function __construct(...$args)
     {
+        $this->IdCodice = Settings::CodiceDestinatarioDefault();
+
         if (isset($args[0]) && $args[0]) {
             $this->IdCodice = $args[0];
         }
@@ -23,7 +25,7 @@ class Id extends Model
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
     {
-        $metadata->addPropertyConstraint('IdCodice', new Length(null, 9, 11));
+        $metadata->addPropertyConstraint('IdCodice', new Length(null, 7, 13));
         $metadata->addPropertyConstraint('IdPaese', new Length(2));
     }
 }
