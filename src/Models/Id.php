@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 class Id extends Model
 {
-    public string $IdCodice;
+    public ?string $IdCodice;
     public ?string $IdPaese;
 
     public function __construct(...$args)
