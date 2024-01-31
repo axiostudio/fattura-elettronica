@@ -26,7 +26,6 @@ class Sede extends Model
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
     {
-        $metadata->addPropertyConstraint('Provincia', new Length(2));
         $metadata->addPropertyConstraint('Nazione', new Length(2));
     }
 }
