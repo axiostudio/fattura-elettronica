@@ -23,7 +23,7 @@ class DatiGeneraliDocumento extends Model
         $this->Numero = $args[0];
         $this->Data = $args[1];
         $this->ImportoTotaleDocumento = $args[2];
-        $this->Causale = (isset($args[4]) && $args[4]) ? $args[4] : Settings::CausaleDefault();
+        $this->Causale = (isset($args[3]) && $args[3]) ? $args[3] : Settings::CausaleDefault();
         $this->TipoDocumento = (isset($args[4]) && $args[4]) ? $args[4] : Settings::TipoDocumentoDefault();
         $this->Divisa = (isset($args[5]) && $args[5]) ? $args[5] : Settings::ValutaDefault();
     }
